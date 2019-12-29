@@ -1,0 +1,39 @@
+﻿@model EmployeeViewModel
+@{
+    ViewData["Title"] = " Employee Details";
+    var photoPath = "~/images/" + (Model.Employee.PhotoPath ?? "noimage.jpg");
+}
+
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h1>@Model.Person.Name 's  Details</h1>
+            </div>
+
+            <div class="card-body text-center">
+                <img class="card-img-top" src="@photoPath" asp-append-version="true" style="height:100px; width:100px;" />
+
+                <h4>Name: @Model.Person.Name</h4>
+                <h4>Email: @Model.Person.Email</h4>
+                <h4>Phone Numer: @Model.Person.PhoneNumber</h4>
+                <h4>Blood Group: @Model.Person.BloodGroup</h4>
+                <h4>Birth Date: @Model.Person.BirthDate</h4>
+                <h4>Present Address: @Model.Person.PresentAddress</h4>
+                <h4>Permannt Address: @Model.Person.PermanentAddress</h4>
+                <h4>Position Name: @Model.Position.PositionName</h4>
+                <h4>JoiningDate: @Model.Employee.Salary</h4>
+
+            </div>
+            <div class="card-footer text-center">
+                <a asp-controller="Employees" asp-action="index" class="btn btn-primary">Back</a>
+                <a asp-controller="Employees" asp-action="Edit" asp-route-id="@Model.Employee.Id" asp-route-personid="@Model.Employee.PersonId" asp-route-positionid="@Model.Employee.PositionId" class="btn btn-primary">Edit</a>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+    <script src="~/js/CustomScript.js"></script>
+
+}

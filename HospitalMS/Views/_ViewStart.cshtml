@@ -1,0 +1,28 @@
+﻿
+@inject SignInManager<ApplicationUser> SignInManager;
+
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+{
+
+    Layout = "_LayoutAuthorized";
+
+
+}
+else if (SignInManager.IsSignedIn(User) && User.IsInRole("Doctor"))
+{
+    Layout = "_LayoutDoctor";
+}
+ else if (SignInManager.IsSignedIn(User) && User.IsInRole("Patient"))
+{
+    Layout = "_LayoutPatient";
+}
+ else if (SignInManager.IsSignedIn(User) && User.IsInRole("User"))
+{
+    Layout = "_LayoutPatient";
+}
+else
+{
+
+    Layout = "_Layout";
+
+}
