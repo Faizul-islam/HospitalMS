@@ -1,4 +1,6 @@
 ﻿using HospitalMS.Models.AccountModels;
+using HospitalMS.Models.AspNetRolesModels;
+using HospitalMS.Models.AspNetUserRolesModels;
 using HospitalMS.Models.DoctorScheduleModels;
 using HospitalMS.Models.EmployeeModels;
 using HospitalMS.Models.PatientModes;
@@ -29,5 +31,7 @@ namespace HospitalMS.Data
         public DbSet<Speciality> Speciality { get; set; }
         public DbSet<Position> Position { get; set; }
         public DbSet<DoctorsSchedule> DoctorsSchedule { get; set; }
+       // public DbSet<AspNetRoles> AspNetRoles { get; set; }
+       // public DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
     }
 }

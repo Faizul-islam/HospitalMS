@@ -1,5 +1,6 @@
 ﻿using HospitalMS.Data;
 using HospitalMS.Models.AccountModels;
+using HospitalMS.Models.DoctorScheduleModels;
 using HospitalMS.Models.EmployeeModels;
 using HospitalMS.Models.PersonModels;
 using HospitalMS.Models.PositionModels;
@@ -13,6 +14,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using static HospitalMS.Models.DoctorScheduleModels.DoctorsSchedule;
 
 namespace HospitalMS.Controllers
 {
@@ -25,19 +27,21 @@ namespace HospitalMS.Controllers
         private readonly IAccountRepository _accountRepository;
         private readonly ISpecialityRepository _specialityRepository;
         private readonly IPositionRepository _positionRepository;
+        private readonly IDoctorsScheduleRepository _doctorsScheduleRepository;
         private readonly IEmployeeRepository _employeeRepository;
         private readonly IHostingEnvironment hostingEnvironment;
 
-        public EmployeesController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmployeeRepository employeeRepository, IHostingEnvironment hostingEnvironment, IPersonRepository personRepository, IAccountRepository accountRepository, ISpecialityRepository specialityRepository, IPositionRepository positionRepository)
+        public EmployeesController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmployeeRepository employeeRepository, IHostingEnvironment hostingEnvironment, IPersonRepository personRepository, IAccountRepository accountRepository, ISpecialityRepository specialityRepository, IPositionRepository positionRepository, IDoctorsScheduleRepository doctorsScheduleRepository)
         {
             this.userManager = userManager;
-            this.signInManager = signInManager;            
+            this.signInManager = signInManager;
             this.hostingEnvironment = hostingEnvironment;
             _personRepository = personRepository;
             _employeeRepository = employeeRepository;
             _accountRepository = accountRepository;
             _specialityRepository = specialityRepository;
             _positionRepository = positionRepository;
+            _doctorsScheduleRepository = doctorsScheduleRepository;
         }
         public IActionResult Index()
         {
@@ -47,15 +51,15 @@ namespace HospitalMS.Controllers
             //var model = _employeeRepository.GetAllEmployees();
             Employee model = new Employee();
             List<EmployeeView> empList = (from e in _employeeRepository.GetAllEmployees()
-                                             join p in _accountRepository.GetAllPerson() on e.PersonId equals p.Id
-                                             select new EmployeeView
-                                             {
-                                                 Id = e.Id,
-                                                 PersonId = e.PersonId,
-                                                 PositionId = e.PositionId,
-                                                 Name = p.Name,
-                                                 PhotoPath = e.PhotoPath
-                                             }).ToList();
+                                          join p in _accountRepository.GetAllPerson() on e.PersonId equals p.Id
+                                          select new EmployeeView
+                                          {
+                                              Id = e.Id,
+                                              PersonId = e.PersonId,
+                                              PositionId = e.PositionId,
+                                              Name = p.Name,
+                                              PhotoPath = e.PhotoPath
+                                          }).ToList();
             // var model = _employeeRepository.GetAllEmployees();
             model.EmployeeList = empList;
             return View(model);
@@ -84,7 +88,7 @@ namespace HospitalMS.Controllers
             //List<ApplicationUser> li = new List<ApplicationUser>();
             //li = _context.AspNetUsers.ToList();
             //ViewBag.PersonList = li;
-            ViewBag.PersonList = _accountRepository.GetAllPerson().OrderBy(x => x.IDate).ThenBy(x=> x.Name).ToList();
+            ViewBag.PersonList = _accountRepository.GetAllPerson().OrderBy(x => x.IDate).ThenBy(x => x.Name).ToList();
             ViewBag.SpecialityList = _specialityRepository.GetAllSpeciality().OrderBy(x => x.Name).ToList();
             ViewBag.PositionList = _positionRepository.GetAllPosition().OrderBy(x => x.PositionName).ToList();
             return View();
@@ -96,7 +100,7 @@ namespace HospitalMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+
                 string uniqueFileName = null;
 
                 if (model.Photo != null)
@@ -175,7 +179,7 @@ namespace HospitalMS.Controllers
                 employee.SpecialtyId = model.SpecialtyId;
                 employee.Salary = model.Salary;
                 employee.EDate = DateTime.Now;
-                if(model.Photo != null)
+                if (model.Photo != null)
                 {
                     if (model.ExistingPhotoPath != null)
                     {
@@ -190,7 +194,7 @@ namespace HospitalMS.Controllers
                 Employee updatedEmployee = _employeeRepository.Update(employee);
                 ApplicationUser updatedPerson = _accountRepository.Update(person);
                 //Position updatePosition = _positionRepository.Update(position);
-                               
+
                 return RedirectToAction("Index");
             }
             return View(model);
@@ -214,57 +218,106 @@ namespace HospitalMS.Controllers
             return uniqueFileName;
         }
 
+        #region Doctor Shedule
         [HttpGet]
         [AllowAnonymous]
         public ViewResult CreateDoctorShedule()
         {
             ViewBag.EmployeeList = (from p in _accountRepository.GetAllPerson()
-                                     join e in _employeeRepository.GetAllEmployees() on p.Id equals e.PersonId
-                                     select new EmployeeViewModel
-                                     {
-                                         Id= e.Id,
-                                         Name=p.Name
-                                     }).OrderBy(x => x.Name).ToList();
+                                    join e in _employeeRepository.GetAllEmployees() on p.Id equals e.PersonId
+                                    select new EmployeeViewModel
+                                    {
+                                        Id = e.Id,
+                                        Name = p.Name
+                                    }).OrderBy(x => x.Name).ToList();
             return View();
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult CreateDoctorShedule(EmployeeViewModel model)
+        public IActionResult CreateDoctorShedule(DoctorsSchedule model)
         {
             if (ModelState.IsValid)
             {
 
-                string uniqueFileName = null;
-
-                if (model.Photo != null)
+                DoctorsSchedule newDoctorsSchedule = new DoctorsSchedule
                 {
-                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
-                    uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
-                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                    model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
-                }
-
-                Employee newEmployee = new Employee
-                {
-                    PersonId = model.PersonId,
-                    SpecialtyId = model.SpecialtyId,
-                    PositionId = model.PositionId,
-                    Salary = model.Salary,
+                    EmployeeId = model.EmployeeId,
+                    Day = model.Day,
+                    Time = model.Time,
                     IUser = 1,
                     IDate = DateTime.Now,
-                    EUser = 0,
-                    EDate = null,
 
-                    PhotoPath = uniqueFileName
                 };
 
-                _employeeRepository.Add(newEmployee);
-                return RedirectToAction("details", new { id = newEmployee.Id, personid = newEmployee.PersonId, positionid = newEmployee.PositionId });
+                _doctorsScheduleRepository.Add(newDoctorsSchedule);
+                return RedirectToAction("ListDoctorShedule");
             }
 
             return View();
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public ViewResult ListDoctorShedule()
+        {
+            DoctorsSchedule model = new DoctorsSchedule();
+
+            List<DoctorsScheduleView> doctorseduleList = (from p in _accountRepository.GetAllPerson()
+                                                          join e in _employeeRepository.GetAllEmployees() on p.Id equals e.PersonId
+                                                          join ds in _doctorsScheduleRepository.GetAllDoctorsSchedule() on e.Id equals ds.EmployeeId
+                                                          select new DoctorsScheduleView
+                                                          {
+                                                              PersonId = p.Id,
+                                                              Id = ds.Id,
+                                                              EmployeeId = ds.EmployeeId,
+                                                              Name = p.Name,
+                                                              Day = ds.Day,
+                                                              Time = ds.Time
+                                                          }).OrderBy(x => x.Day).ThenBy(x => x.Time).ThenBy(x => x.Name).ToList();
+            model.DoctorsScheduleList = doctorseduleList;
+            return View(model);
+
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ViewResult EditDoctorShedule(int id, string personid, int emplolyeeid)
+        {
+            Employee employee = _employeeRepository.GetEmployee(emplolyeeid);
+            ApplicationUser person = _employeeRepository.GetPerson(personid);
+            DoctorsSchedule doctorsSchedule = _doctorsScheduleRepository.GetDoctorsSchedule(id);
+            DoctorSheduleViewModel doctorSheduleViewModel = new DoctorSheduleViewModel
+            {
+                Id = doctorsSchedule.Id,
+                Name = person.Name,
+                EmployeeId = doctorsSchedule.EmployeeId,
+                Day = doctorsSchedule.Day,
+                Time = doctorsSchedule.Time
+            };
+            return View(doctorSheduleViewModel);
+        }
+        [HttpPost]
+        [AllowAnonymous]
+        public ViewResult EditDoctorShedule(DoctorSheduleViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //Employee employee = _employeeRepository.GetEmployee(model.EmployeeId);
+                //ApplicationUser person = _employeeRepository.GetPerson(model.PersonId);
+                DoctorsSchedule doctorsSchedule = _doctorsScheduleRepository.GetDoctorsSchedule(model.Id);
+
+                doctorsSchedule.Id = model.Id;
+                doctorsSchedule.EmployeeId = model.EmployeeId;
+                doctorsSchedule.Day = model.Day;
+                doctorsSchedule.Time = model.Time;
+                DoctorsSchedule updatedoctorschedule = _doctorsScheduleRepository.Update(doctorsSchedule);
+
+
+            }
+            //return RedirectToAction("ListDoctorShedule");
+            return View(model);
+        }
+        #endregion
     }
 }

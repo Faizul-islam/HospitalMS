@@ -43,16 +43,15 @@
                             </select>*@
                     </div>
                     <div class="col-lg-9 col-sm-6 col-8 header-top-right">
-                        <a href="tel:+9530123654896">
+                        <a href="Mobile:+01777685821-22">
                             <span class="lnr lnr-phone-handset"></span> <span class="text">
                                 <span class="text">
-                                    +953
-                                    012 3654 896
+                                    +088 01777685821
                                 </span>
                             </span>
                         </a>
-                        <a href="mailto:faizula@gmail.com"><span class="lnr lnr-envelope"></span> <span class="text"><span class="text">medical@ckduh.com</span></span></a>
-                        <a asp-controller="home" asp-action="Appointment" class="primary-btn text-uppercase">Appointment</a>
+                        <a href="mailto:faizula@gmail.com"><span class="lnr lnr-envelope"></span> <span class="text"><span class="text-lowercase">medical@ckduhospitalbd.com</span></span></a>
+                        <a asp-controller="home" asp-action="NewAppointment" class="primary-btn text-uppercase">Appointment</a>
                     </div>
                 </div>
             </div>
@@ -70,8 +69,9 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
-                    <a class="navbar-brand logo_h" asp-controller="home" asp-action="index"><img style="height: 40px;" src="~/img/dlogo.png" alt=""></a>
-                    <p>Center for Kidney Disease & Urology Hospital</p>
+                    <a class="navbar-brand logo_h" asp-controller="home" asp-action="index"><img style="height: 56px; width: 65px;" src="~/img/dlogo.png" alt=""></a>
+                    <h4 style="margin-bottom: 0px; text-align:center;"><b style="color:#000000;">Center for Kidney Disease & Urology Hospital</b><br /><text style="font-size:12px;">Road No. 3, House No. 32, Shyamoli, Dhaka-1207</text></h4>
+
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="icon-bar"></span>
@@ -82,7 +82,7 @@
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
                             <li class="nav-item active"><a class="nav-link" asp-controller="home" asp-action="index">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" asp-controller="home" asp-action="about">About</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="About">About</a></li>
                             <li class="nav-item"><a class="nav-link" asp-controller="home" asp-action="index">Department</a></li>
                             @*<li class="nav-item submenu dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"

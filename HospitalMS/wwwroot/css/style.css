@@ -424,8 +424,7 @@ button:focus {
   background: url(../img/banner/banner.jpg) no-repeat scroll center center;
   background-size: cover; }
   .home_banner_area .banner_inner {
-    width: 100%;
-    display: flex; }
+    width: 100%; }
     .home_banner_area .banner_inner .container {
       vertical-align: middle;
       align-self: center; }
@@ -581,7 +580,7 @@ button:focus {
     right: 0;
     top: 0;
     height: 100%;
-    width: 55%;
+    width: 100%;
     z-index: -1; }
     .about_area .about_bg.overlay:after {
       opacity: .3;

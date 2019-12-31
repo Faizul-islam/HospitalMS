@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using HospitalMS.Data;
 using HospitalMS.Models.AccountModels;
+using HospitalMS.Models.AspNetRolesModels;
+using HospitalMS.Models.AspNetUserRolesModels;
+using HospitalMS.Models.DoctorScheduleModels;
 using HospitalMS.Models.EmployeeModels;
 using HospitalMS.Models.PersonModels;
 using HospitalMS.Models.PositionModels;
@@ -72,6 +75,9 @@ namespace HospitalMS
             services.AddScoped<IAccountRepository, SQLAccountRepository>();
             services.AddScoped<ISpecialityRepository, SQLSpecialityRepository>();
             services.AddScoped<IPositionRepository, SQLPositionRepository>();
+            services.AddScoped<IDoctorsScheduleRepository, SQLDoctorsScheduleRepository>();
+            //services.AddScoped<IAspNetRolesRepository, SQLAspNetRolesRepository>();
+           // services.AddScoped<IAspNetUserRolesRepository, SQLAspNetUserRolesRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,56 @@
+﻿@model DoctorsSchedule
+@{
+    ViewData["Title"] = "ListDoctorShedule";
+}
+
+<h2 style="padding-top:21px;">Doctor Shedule List</h2>
+
+<div class="card-deck">
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Day</th>
+                    <th>Time</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ds in Model.DoctorsScheduleList)
+                {
+                    <tr>
+
+                        <td>@ds.Name</td>
+                        <td>@ds.Day.Value.ToString("dd/MM/yyyy")</td>
+                        <td>@ds.Time.Value.ToString("hh:mm:ss tt")</td>
+                        <td><a asp-controller="Employees" asp-action="EditDoctorShedule" asp-route-id="@ds.Id" asp-route-personid="@ds.PersonId" asp-route-emplolyeeid="@ds.EmployeeId" class="btn btn-primary m-1">Edit</a></td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+@*<div class="card-deck">
+        @foreach (var ds in Model.DoctorsScheduleList)
+        {
+
+            <div class="card m-3" style="min-width:18rem; max-width:30.5px;">
+                <div class="card-header">
+                    <h3 hidden>@ds.Id</h3>
+                    <h3 hidden>@ds.EmployeeId</h3>
+                    <h3>@ds.Name</h3>
+                    <h3>@ds.Day</h3>
+                    <h3>@ds.Time</h3>
+                </div>
+
+                <div class="card-footer text-center">
+                    <a asp-controller="Employees" asp-action="Details" asp-route-id="@ds.Id" asp-route-personid="@ds.PersonId" asp-route-emplolyeeid="@ds.EmployeeId" class="btn btn-primary m-1">View</a>
+                    <a asp-controller="Employees" asp-action="EditDoctorShedule" asp-route-id="@ds.Id" asp-route-personid="@ds.PersonId" asp-route-emplolyeeid="@ds.EmployeeId" class="btn btn-primary m-1">Edit</a>
+                </div>
+            </div>
+        }
+    </div>*@

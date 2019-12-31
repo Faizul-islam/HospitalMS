@@ -2,38 +2,43 @@
 ============================================================================================ */
 
 .home_banner_area {
-  z-index: 1;
-  min-height: 900px;
-  display: flex;
-  background: url(../img/banner/banner.jpg) no-repeat scroll center center;
-  background-size: cover;
-  .banner_inner {
-    width: 100%;
-    display: flex;
-    .container {
-      vertical-align: middle;
-      align-self: center;
-    }
-    .banner_content {
-      color: #fff;
-      h2 {
-        margin-top: 0px;
-        font-size: 48px;
-        font-weight: 700;
-        font-family: $title-font;
-        line-height: 54px;
-        color: #fff;
-      }
-      p {
-        max-width: 680px;
-        font-size: 16px;
-        margin: 25px 0px 45px;
-        @media (max-width: 991px) {
-          max-width: 460px;
+    z-index: 1;
+    min-height: 900px;
+    background: url(../img/banner/banner.jpg) no-repeat scroll center center;
+    background-size: cover;
+
+    .banner_inner {
+        width: 100%;
+        padding-top: 38px;
+
+        .container {
+            vertical-align: middle;
+            align-self: center;
         }
-      }
+
+        .banner_content {
+            color: #fff;
+
+            h2 {
+                margin-top: 0px;
+                font-size: 48px;
+                font-weight: 700;
+                font-family: $title-font;
+                line-height: 54px;
+                color: #fff;
+            }
+
+            p {
+                max-width: 680px;
+                font-size: 16px;
+                margin: 25px 0px 45px;
+
+                @media (max-width: 991px) {
+                    max-width: 460px;
+                }
+            }
+        }
     }
-  }
 }
 
 .blog_banner {

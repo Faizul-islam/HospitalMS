@@ -1,0 +1,40 @@
+﻿@model Employee
+
+<section class="about_area lite_bg">
+    <div class="container">
+        <div class="row align-items-center">
+            <div>
+                <div class="about_right overlay">
+                    <div class="about_inner">
+                        <h4>Select Time for make an appointment</h4>
+                        @*<input value="@DateTime.Now.ToString("dd/MM/yyyy")" readonly="@true" class="form-control" style="text-align:center;" />*@
+
+                        @foreach (var employee in Model.DoctorsScheduleList)
+                        {
+                            <table>
+                                <tr>
+                                    <a asp-controller="home" asp-action="Appointment" class=" text-uppercase" style="color:white;">@employee.Name -- @employee.Day.Value.ToString("dd/MM/yyyy") - @employee.Time.Value.ToString("hh:mm:ss tt")</a>
+                                </tr>
+                            </table>
+
+
+
+
+                            @*@if (@DateTime.Now.ToString("dd/MM/yyyy") == @employee.Day.Value.ToString("dd/MM/yyyy"))
+                                {
+
+                                    <a asp-controller="home" asp-action="Appointment" class=" text-uppercase" style="color:white;">@employee.Name -- @employee.Day.Value.ToString("dd/MM/yyyy") - @employee.Time.Value.ToString("hh:mm:ss tt")</a>
+
+                                }*@
+
+
+                        }
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="about_bg overlay"></div>
+    </div>
+</section>
