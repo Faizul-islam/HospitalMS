@@ -7,16 +7,17 @@
 {
     <div class="container-fluid" style="padding-top:20px;">
 
+        <h2> Welcome</h2>
         <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
+        @*<ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="#">Dashboard</a>
             </li>
             <li class="breadcrumb-item active">Overview</li>
-        </ol>
+        </ol>*@
 
         <!-- Icon Cards-->
-        <div class="row">
+        @*<div class="row">
             <div class="col-xl-3 col-sm-6 mb-3">
                 <div class="card text-white bg-primary o-hidden h-100">
                     <div class="card-body">
@@ -81,10 +82,10 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div>*@
 
         <!-- Area Chart Example-->
-        <div class="card mb-3">
+        @*<div class="card mb-3">
             <div class="card-header">
                 <i class="fas fa-chart-area"></i>
                 Area Chart Example
@@ -93,10 +94,10 @@
                 <canvas id="myAreaChart" width="100%" height="30"></canvas>
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-        </div>
+        </div>*@
 
         <!-- DataTables Example -->
-        <div class="card mb-3">
+        @*<div class="card mb-3">
             <div class="card-header">
                 <i class="fas fa-table"></i>
                 Data Table Example
@@ -586,7 +587,7 @@
                 </div>
             </div>
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-        </div>
+        </div>*@
 
     </div>
 }
@@ -683,8 +684,7 @@ else
                         </div>
                     </div>
                 </div>
-                <!-- single feature -->
-                <div class="col-lg-4 col-md-6">
+                @*<div class="col-lg-4 col-md-6">
                     <div class="single_feature">
                         <div class="feature_head">
                             <img src="~/img/features/icon2.png" alt="">
@@ -701,7 +701,6 @@ else
                         </div>
                     </div>
                 </div>
-                <!-- single feature -->
                 <div class="col-lg-4 col-md-6">
                     <div class="single_feature">
                         <div class="feature_head">
@@ -718,7 +717,7 @@ else
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>*@
             </div>
         </div>
     </section>
@@ -730,11 +729,11 @@ else
             <div class="row justify-content-center">
                 <div class="col-lg-7">
                     <div class="main_title">
-                        <h2>Medicare Popular Departments</h2>
-                        <p>
+                        <h2>Popular Departments</h2>
+                        @*<p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
                             magna aliqua.
-                        </p>
+                        </p>*@
                     </div>
                 </div>
             </div>
@@ -792,38 +791,34 @@ else
                             </div>
                         </div>*@
                 </text>
-                <a class="primary-btn text-uppercase" href="#">Learn More</a>
+                @*<a class="primary-btn text-uppercase" href="#">Learn More</a>*@
             </div>
         </div>
     </section>
     <!--================ End Department Area =================-->
 
     <!--================ Start Counter Area =================-->
-    <section class="section_gap counter_area overlay">
+    @*<section class="section_gap counter_area overlay">
         <div class="container">
             <div class="row">
-                <!--single-counter-->
                 <div class="col-lg-3 col-sm-6">
                     <div class="single_counter">
                         <h1> <span class="counter_number">30</span>K</h1>
                         <p>Years <br> of Experiences</p>
                     </div>
                 </div>
-                <!--single-counter-->
                 <div class="col-lg-3 col-sm-6">
                     <div class="single_counter">
                         <h1> <span class="counter_number">2</span>K+</h1>
                         <p>Instant <br> Blood Donors </p>
                     </div>
                 </div>
-                <!--single-counter-->
                 <div class="col-lg-3 col-sm-6">
                     <div class="single_counter">
                         <h1> <span class="counter_number">5</span>K+</h1>
                         <p>Well Cured <br> Patients</p>
                     </div>
                 </div>
-                <!--single-counter-->
                 <div class="col-lg-3 col-sm-6">
                     <div class="single_counter">
                         <h1> <span class="counter_number">20</span>K+</h1>
@@ -832,120 +827,8 @@ else
                 </div>
             </div>
         </div>
-    </section>
-    <!--================ Start Counter Area =================-->
+    </section>*@
     <partial name="~/Views/Home/_DoctorListPartialView.cshtml" />
-    <!--================ End Team Area =================-->
-    <!--================ Start Blog Area =================-->
-    <section class="section_gap blog_area">
-        <div class="container">
-            <div class="row">
-                <!-- recent blog -->
-                <div class="col-lg-6">
-                    <div class="recent_blog">
-                        <div class="blog_title">
-                            <h2>Our Recent Blogs</h2>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                dolore magna aliqua.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!-- single-blog -->
-                        <div class="col-lg-12 col-sm-12">
-                            <div class="single_blog">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-4 col-md-3">
-                                        <div class="blog_thumb">
-                                            <img class="img-fluid" src="~/img/recent-blog/blog1.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8">
-                                        <div class="blog_details">
-                                            <div class="blog_meta">
-                                                <span><i class="fa fa-calendar"></i>13th Dec</span>
-                                                <span><i class="fa fa-heart-o"></i>15</span>
-                                                <span><i class="fa fa-comment-o"></i>04</span>
-                                            </div>
-                                            <h4>
-                                                <a href="#">Portable Fashion for women</a>
-                                            </h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- single-blog -->
-                        <div class="col-lg-12 col-sm-12">
-                            <div class="single_blog">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-4 col-md-3">
-                                        <div class="blog_thumb">
-                                            <img class="img-fluid" src="~/img/recent-blog/blog2.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8">
-                                        <div class="blog_details">
-                                            <div class="blog_meta">
-                                                <span><i class="fa fa-calendar"></i>13th Dec</span>
-                                                <span><i class="fa fa-heart-o"></i>15</span>
-                                                <span><i class="fa fa-comment-o"></i>04</span>
-                                            </div>
-                                            <h4>
-                                                <a href="#">Portable Fashion for women</a>
-                                            </h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- single-blog -->
-                        <div class="col-lg-12 col-sm-12">
-                            <div class="single_blog">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-4 col-md-3">
-                                        <div class="blog_thumb">
-                                            <img class="img-fluid" src="~/img/recent-blog/blog3.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8">
-                                        <div class="blog_details">
-                                            <div class="blog_meta">
-                                                <span><i class="fa fa-calendar"></i>13th Dec</span>
-                                                <span><i class="fa fa-heart-o"></i>15</span>
-                                                <span><i class="fa fa-comment-o"></i>04</span>
-                                            </div>
-                                            <h4>
-                                                <a href="#">Portable Fashion for women</a>
-                                            </h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- appoinment area -->
-                <div class="col-lg-6">
-                    <div class="recent_blog appoinment">
-                        <div class="blog_title">
-                            <h2>Make an Appointment</h2>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                                dolore magna aliqua.
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--================ End Blog Area =================-->
-
+   
+   
 }

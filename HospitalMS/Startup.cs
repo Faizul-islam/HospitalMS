@@ -8,6 +8,7 @@ using HospitalMS.Models.AspNetRolesModels;
 using HospitalMS.Models.AspNetUserRolesModels;
 using HospitalMS.Models.DoctorScheduleModels;
 using HospitalMS.Models.EmployeeModels;
+using HospitalMS.Models.PatientModes;
 using HospitalMS.Models.PersonModels;
 using HospitalMS.Models.PositionModels;
 using HospitalMS.Models.SpecialityModels;
@@ -72,6 +73,7 @@ namespace HospitalMS
 
             services.AddScoped<IPersonRepository, SQLPersonRepository>();
             services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
+            services.AddScoped<IPatientRepository, SQLPatientRepository>();
             services.AddScoped<IAccountRepository, SQLAccountRepository>();
             services.AddScoped<ISpecialityRepository, SQLSpecialityRepository>();
             services.AddScoped<IPositionRepository, SQLPositionRepository>();

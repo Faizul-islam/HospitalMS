@@ -14,9 +14,10 @@
             <div class="row">
                 <label asp-for="PersonId" class="col-sm-4 col-form-label"></label>
                 <div class="col-sm-7">
+                   
                     <select asp-for="PersonId" class="custom-select mr-sm-2"
                             asp-items="@(new SelectList(@ViewBag.PersonList,"Id","Name"))">
-                        <option value="">Please Select</option>
+                        @*<option value="">Please Select</option>*@
                     </select>
                     <span asp-validation-for="Gender" class="text-danger"></span>
                 </div>

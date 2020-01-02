@@ -13,7 +13,7 @@
                         {
                             <table>
                                 <tr>
-                                    <a asp-controller="home" asp-action="Appointment" class=" text-uppercase" style="color:white;">@employee.Name -- @employee.Day.Value.ToString("dd/MM/yyyy") - @employee.Time.Value.ToString("hh:mm:ss tt")</a>
+                                    <a asp-controller="Account" asp-action="Login" class=" text-uppercase" style="color:white;">@employee.Name -- @employee.Day.Value.ToString("dd/MM/yyyy") - @employee.Time.Value.ToString("hh:mm:ss tt")<text hidden>@employee.EmployeeId</text></a>
                                 </tr>
                             </table>
 

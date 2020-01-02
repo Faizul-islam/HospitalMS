@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,10 +12,15 @@ namespace HospitalMS.Models.PatientModes
         #region Patient
 
         public int? Id { get; set; }
+        [Display(Name = "Name")]
         public string PersonId { get; set; }
         public int? ProblemCategoryId { get; set; }
+        [Display(Name = "Problem Description")]
         public string ProblemDescription { get; set; }
-        public int? EmployeeId { get; set; }
+        public int? EmployeId { get; set; }
+        [Display(Name = "Birth Date")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        [DataType(DataType.Date)]
         public DateTime? Date { get; set; }
         //public string PhotoPath { get; set; }
 

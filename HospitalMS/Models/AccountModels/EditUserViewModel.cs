@@ -24,6 +24,9 @@ namespace HospitalMS.Models.AccountModels
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
 
+        [Display(Name = "Birth Date")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        [DataType(DataType.Date)]
         public DateTime? BirthDate { get; set; }
         public GenderEnum? Gender { get; set; }
         public String PresentAddress { get; set; }

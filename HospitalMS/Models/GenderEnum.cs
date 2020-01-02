@@ -7,7 +7,8 @@ namespace HospitalMS.Models
 {
     public enum GenderEnum
     {
-        Meal,
-        Femeal
+        Male,
+        Female,
+        Other
     }
 }

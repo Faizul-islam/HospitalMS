@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewData["Title"] = "Prescription";
+}
+
+<h1 style="padding-top:22px;"></h1>
+<body>
+    <div id="content" class="container">
+        <div style="text-align:right;">
+            <img style="height: 56px; width: 65px; padding-bottom:5px;" src="~/img/dlogo.png" alt="">
+            <h4 style="margin-bottom: 0px; text-align:right;"><b style="color:#000000;"> Center for Kidney Disease & Urology Hospital</b></h4>
+        </div><hr />
+        <div style="color:black;">
+            <p>    Doctor Name:</p>
+            <p>    Designation:</p>
+            <p>Department Name:</p> 
+        </div>
+        <br />
+        <div class="container">
+            <div class="row" style="padding-top: 0px;">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <td style="width: 50%;">Patient name: </td>
+                            <td style="width: 30%;">Age:</td>
+                            <td readonly="@true" style="text-align:center; width: 20%;">Date:@DateTime.Now.ToString("dd/MM/yyyy")</td>
+                        </tr>
+                </table>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr style="height: 386px;">
+                            <td style="width:30%;">
+                                
+                            </td>
+
+                            <td style="width: 70%;">
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+                <div class="col-sm-4"></div>
+                <div class="col-sm-8"></div>
+            </div>
+        </div>
+        <div><h6 style="margin-bottom: 0px; text-align:center;"><b style="color:#000000;">"Center for Kidney Disease & Urology Hospital" </b><text style="font-size:12px;">   ||  Road No. 3, House No. 32, Shyamoli, Dhaka-1207</text><text style="font-size:15px;">   ||  Phone: +088 01777685821</text></h6></div>
+
+    </div>
+</body>
+<div id="editor"></div>
+<button id="cmd">Prit PDF</button>
+
+
+
+<script src="~/doctor/jquery-1.12.3.min.js"></script>
+<script src="~/doctor/jspdf.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+
+
+
+@section Scripts {
+    <script type="text/javascript">
+        function printDiv() {
+
+            var divToPrint = document.getElementById('content');
+
+            var newWin = window.open('', 'Print-Window');
+
+            newWin.document.open();
+
+            newWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</body></html>');
+
+            newWin.document.close();
+
+            setTimeout(function () { newWin.close(); }, 10);
+
+        }
+        $('#cmd').on('click', function () {
+            printDiv();
+        })
+    </script>
+    @*<script type="text/javascript">
+
+                function openPrintDialogue(){
+          $('<iframe>', {
+            name: 'myiframe',
+            class: 'printFrame'
+          })
+          .appendTo('body')
+          .contents().find('body')
+          .append(`
+            <h1>Our Amazing Offer</h1>
+            <img src='coupon.png' />
+          `);
+
+          window.frames['myiframe'].focus();
+          window.frames['myiframe'].print();
+
+          setTimeout(() => { $(".printFrame").remove(); }, 1000);
+        };
+
+        $('button').on('click', openPrintDialogue);
+
+
+
+                var doc = new jsPDF();
+                var specialElementHandlers = {
+                    '#editor': function (element, renderer) {
+                        return true;
+                    }
+                };
+
+                $('#cmd').click(function () {
+                    doc.fromHTML($('#content').html(), 15, 15, {
+                        'width': 170,
+                        'elementHandlers': specialElementHandlers
+                    });
+                    doc.save('sample-file.pdf');
+                });
+
+
+
+            </script>*@
+}

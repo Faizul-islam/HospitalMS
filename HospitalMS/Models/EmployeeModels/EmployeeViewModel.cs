@@ -3,6 +3,7 @@ using HospitalMS.Models.PositionModels;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace HospitalMS.Models.EmployeeModels
 
         #region Employee
         public int Id { get; set; }
-
+        [Display(Name = " Person Name")]
         public string PersonId { get; set; }
         public int SpecialtyId { get; set; }
         public int PositionId { get; set; }

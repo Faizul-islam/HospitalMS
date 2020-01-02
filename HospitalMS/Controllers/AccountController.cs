@@ -61,7 +61,7 @@ namespace HospitalMS.Controllers
                     BloodGroup = model.BloodGroup,
                     PresentAddress = model.PresentAddress,
                     PermanentAddress = model.PermanentAddress,
-
+                    IDate = model.IDate
 
                 };
 
@@ -79,13 +79,17 @@ namespace HospitalMS.Controllers
                     {
                         return RedirectToAction("Create", "Employees");
                     }
-                    if (signInManager.IsSignedIn(User))
+                    
+                    IdentityRole identityRole = new IdentityRole
+                    {
+                        Name = "Patient"
+                    };
+                    if (User.IsInRole("Patient"))
                     {
                         return RedirectToAction("Create", "Patients");
                     }
-
                     await signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("index", "home");
+                    return RedirectToAction("Create", "Patients");
                 }
 
                 // If there are any errors, add them to the ModelState object

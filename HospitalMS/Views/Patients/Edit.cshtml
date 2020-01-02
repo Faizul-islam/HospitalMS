@@ -1,11 +1,22 @@
 ﻿
+
+
 @model PatientViewModel
 
-<form enctype="multipart/form-data" asp-controller="Patients" asp-action="create" method="post" class="mt-3">
+
+@{
+    ViewBag.Title = "Edit Patient";
+    var photoPath = "~/images/" + (Model.ExistingPhotoPath ?? "noimage.jpg");
+}
+
+<form enctype="multipart/form-data" asp-controller="Employees" asp-action="Edit" method="post" class="mt-3">
     <div class="form-group row">
+        <input hidden asp-for="Id" />
+        <input hidden asp-for="Ids" />
+        <input hidden asp-for="ExistingPhotoPath" />
         <label asp-for="PersonId" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
-            <input asp-for="PersonId" class="form-control" placeholder="Person" />
+            <input asp-for="PersonId" class="form-control" placeholder="Name" />
             <span asp-validation-for="PersonId" class="text-danger"></span>
         </div>
     </div>
@@ -27,11 +38,10 @@
     <div class="form-group row">
         <label asp-for="EmployeId" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
-            <input asp-for="EmployeId" class="form-control" placeholder="Employee Name" />
+            <input asp-for="EmployeId" class="form-control" placeholder="EmployeeId" />
             <span asp-validation-for="EmployeId" class="text-danger"></span>
         </div>
     </div>
-
     @*<div class="form-group row">
             <label asp-for="EmpCatId" class="col-sm-2 col-form-label"></label>
             <div class="col-sm-10">
@@ -45,24 +55,33 @@
     <div class="form-group row">
         <label asp-for="Date" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
-            <input asp-for="Date" class="form-control" placeholder="Date" readonly="@true" value="@DateTime.Now" />
+            <input asp-for="Date" class="form-control" placeholder="Date" value="@DateTime.Now" />
 
         </div>
     </div>
+
+
 
     <div class="form-group row">
         <label asp-for="Photo" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
             <div class="custom-file">
                 <input asp-for="Photo" class="form-control custom-file-input" />
-                <label class="custom-file-label">Choose File...</label>
+                <label class="custom-file-label">Click here to change Photo</label>
             </div>
         </div>
     </div>
+
+    @*Display the existing employee photo*@
+    <div class="form-group row col-sm-4 offset-4">
+        <img class="imageThumbnail" src="@photoPath" asp-append-version="true" />
+    </div>
+
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group row">
         <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-primary">Upate</button>
+            <a asp-controller="Employees" asp-action="index" class="btn btn-primary">Cancel</a>
         </div>
     </div>
 

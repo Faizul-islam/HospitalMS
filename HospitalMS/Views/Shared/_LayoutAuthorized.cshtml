@@ -140,12 +140,12 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" asp-controller="Employees" asp-action="CreateDoctorShedule">Create Appointment Dhedule</a>
-                    <a class="dropdown-item" asp-controller="Employees" asp-action="ListDoctorShedule">View Appointment Dhedule list</a>
+                    <a class="dropdown-item" asp-controller="Employees" asp-action="CreateDoctorShedule">Create schedule</a>
+                    <a class="dropdown-item" asp-controller="Employees" asp-action="ListDoctorShedule">View schedule list</a>
                    
                     <div class="dropdown-divider"></div>
                     <h6 class="dropdown-header">Other Pages:</h6>
-                    <a class="dropdown-item" asp-controller="Administration" asp-action="ListUsers">Manage Users</a>
+                    @*<a class="dropdown-item" asp-controller="Administration" asp-action="ListUsers">Manage Users</a>*@
                     <a class="dropdown-item" asp-controller="Administration" asp-action="ListRoles">Manage Roles</a>
                 </div>
             </li>
@@ -155,19 +155,19 @@
                     <span>Doctors</span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                    <h6 class="dropdown-header">Login Screens:</h6>
+                    @*<h6 class="dropdown-header">Login Screens:</h6>*@
                     <a class="dropdown-item" asp-controller="Account" asp-action="Register">Doctor Registeration</a>
                     <a class="dropdown-item" asp-controller="Employees" asp-action="Create">Employees</a>
                     <a class="dropdown-item" asp-controller="Employees" asp-action="Index">Employee List</a>
-                    <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
+                    @*<a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
                     <div class="dropdown-divider"></div>
                     <h6 class="dropdown-header">Other Pages:</h6>
                     <a class="dropdown-item" href="404.html">404 Page</a>
-                    <a class="dropdown-item" href="blank.html">Blank Page</a>
+                    <a class="dropdown-item" href="blank.html">Blank Page</a>*@
                 </div>
             </li>
 
-            <li class="nav-item">
+            @*<li class="nav-item">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span>
@@ -178,7 +178,7 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span>
                 </a>
-            </li>
+            </li>*@
         </ul>
 
         <div id="content-wrapper">

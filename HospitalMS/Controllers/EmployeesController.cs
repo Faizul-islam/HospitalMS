@@ -88,7 +88,7 @@ namespace HospitalMS.Controllers
             //List<ApplicationUser> li = new List<ApplicationUser>();
             //li = _context.AspNetUsers.ToList();
             //ViewBag.PersonList = li;
-            ViewBag.PersonList = _accountRepository.GetAllPerson().OrderBy(x => x.IDate).ThenBy(x => x.Name).ToList();
+            ViewBag.PersonList = _accountRepository.GetAllPerson().OrderBy(x =>x.Name).ToList();
             ViewBag.SpecialityList = _specialityRepository.GetAllSpeciality().OrderBy(x => x.Name).ToList();
             ViewBag.PositionList = _positionRepository.GetAllPosition().OrderBy(x => x.PositionName).ToList();
             return View();

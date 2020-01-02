@@ -32,6 +32,9 @@ namespace HospitalMS.Models.AccountModels
         public string UserName { get; set; }
         public string PhoneNumber { get; set; }
 
+        [Display(Name = "Birth-Date")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
         public GenderEnum? Gender { get; set; }
 
@@ -40,7 +43,7 @@ namespace HospitalMS.Models.AccountModels
         public String PermanentAddress { get; set; }
         public String PhotoPath { get; set; }
         public int IUser { get; set; }
-        public DateTime IDate { get; set; }
+        public DateTime? IDate { get; set; }
         public int EUsaer { get; set; }
         public DateTime EDate { get; set; }
     }
